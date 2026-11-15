@@ -151,14 +151,14 @@ Ready-to-use **7-Zip.app** with the official **7-Zip $VERSION** console engine i
 
 ### Install
 1. Download **$DMG_NAME**, open it and drag **7-Zip** to **Applications**.
-2. Launch 7-Zip once. The app is not notarized by Apple, so the first launch is blocked:
+2. Launch 7-Zip once. The app isn't signed with an Apple developer certificate, so the first launch is blocked:
    open **System Settings → Privacy & Security** and press **Open Anyway**.
    Or in Terminal: \`xattr -dr com.apple.quarantine /Applications/7-Zip.app\`
 3. Right-click any file in Finder → **7-Zip**. If the submenu is missing, press **Extension settings…** in the 7-Zip window.
 
 ### Установка
 1. Скачайте **$DMG_NAME**, откройте и перетащите **7-Zip** в **Программы**.
-2. Запустите 7-Zip один раз. Приложение не нотариально заверено Apple, поэтому первый запуск будет заблокирован:
+2. Запустите 7-Zip один раз. Приложение не подписано сертификатом разработчика Apple, поэтому первый запуск будет заблокирован:
    откройте **Системные настройки → Конфиденциальность и безопасность** и нажмите **Всё равно открыть**.
    Или в Терминале: \`xattr -dr com.apple.quarantine /Applications/7-Zip.app\`
 3. Правый клик по файлу в Finder → **7-Zip**. Если подменю нет — нажмите **Настройки расширений…** в окне 7-Zip.

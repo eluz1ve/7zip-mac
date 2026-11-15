@@ -122,13 +122,16 @@ ICON_OUT="$BUILD/icon-compiled"
 mkdir -p "$ICON_OUT"
 if xcrun actool "$ICON_DOC" --compile "$ICON_OUT" --app-icon AppIcon --platform macosx \
         --minimum-deployment-target 13.0 --target-device mac \
-        --output-partial-info-plist "$ICON_OUT/partial.plist" >/dev/null 2>&1 \
+        --output-partial-info-plist "$ICON_OUT/partial.plist" >"$BUILD/actool.log" 2>&1 \
    && [ -f "$ICON_OUT/Assets.car" ]; then
     cp "$ICON_OUT/Assets.car" "$APP/Contents/Resources/Assets.car"
     [ -f "$ICON_OUT/AppIcon.icns" ] && cp "$ICON_OUT/AppIcon.icns" "$APP/Contents/Resources/AppIcon.icns"
     echo "Значок: светлый и тёмный варианты"
 else
-    echo "Значок: actool недоступен, используется единый тёмный значок"
+    echo "Значок: actool не собрал значок Icon Composer, используется единый тёмный значок"
+    [ -n "${GITHUB_ACTIONS:-}" ] && echo "::warning::Значок Icon Composer не собран — в сборке единый тёмный значок."
+    sed 's/^/    actool: /' "$BUILD/actool.log" | head -20
+    [ "${REQUIRE_ICON_COMPOSER:-0}" = 1 ] && { echo "Нужен значок Icon Composer (REQUIRE_ICON_COMPOSER=1)." >&2; exit 1; }
 fi
 
 # ---------- подпись ----------

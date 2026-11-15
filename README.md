@@ -79,7 +79,7 @@ then restart 7-Zip. The Finder submenu always follows the system language.
 1. Download the latest **`7-Zip-….dmg`** from [**Releases**](https://github.com/eluz1ve/7zip-mac/releases/latest).
    The official 7-Zip engine is already inside — nothing else to install.
 2. Open the image and drag **7-Zip** to **Applications**.
-3. Launch 7-Zip once. The app isn't notarized by Apple, so macOS blocks the first launch:
+3. Launch 7-Zip once. The app isn't signed with an Apple developer certificate, so macOS blocks the first launch:
    open **System Settings → Privacy & Security** and press **Open Anyway**.
 4. Right-click any file in Finder → **7-Zip**. The Finder extension is enabled automatically on first launch;
    if the submenu is missing, press **Extension settings…** in the 7-Zip window.

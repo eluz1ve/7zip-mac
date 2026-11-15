@@ -18,6 +18,11 @@ on:
         required: false
         type: boolean
         default: false
+      publish:
+        description: "Publish a release (off — only build and attach the .dmg to this run)"
+        required: false
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -28,7 +33,8 @@ concurrency:
 
 jobs:
   release:
-    runs-on: macos-15
+    # macOS 26: значок Icon Composer (светлый и тёмный варианты) собирается только на нём.
+    runs-on: macos-26
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
@@ -46,7 +52,15 @@ jobs:
           SEVENZIP_URL: ${{ inputs.url }}
         run: ./release.sh "$SEVENZIP_URL" dist
 
+      - name: Attach build to this run
+        if: ${{ !inputs.publish }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: 7-Zip-${{ steps.build.outputs.version }}-macOS-${{ steps.build.outputs.label }}
+          path: dist/*
+
       - name: Publish release
+        if: ${{ inputs.publish }}
         env:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ steps.build.outputs.version }}
