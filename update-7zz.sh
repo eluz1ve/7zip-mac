@@ -25,8 +25,11 @@ version_of() {
 }
 
 find_latest_download() {
+    # С 26.06 сборки раздельные: 7zXXXX-mac.tar.xz — Apple Silicon, 7zXXXX-mac-x64.tar.xz — Intel.
+    local suffix="mac"
+    [ "$(uname -m)" = "x86_64" ] && suffix="mac-x64"
     local newest="" candidate
-    for candidate in "$HOME"/Downloads/7z*-mac.tar.xz "$HOME"/Downloads/7z*-mac; do
+    for candidate in "$HOME"/Downloads/7z*-"$suffix".tar.xz "$HOME"/Downloads/7z*-"$suffix"; do
         [ -e "$candidate" ] || continue
         if [ -z "$newest" ] || [ "$candidate" -nt "$newest" ]; then
             newest="$candidate"
@@ -38,7 +41,7 @@ find_latest_download() {
 src="${1:-}"
 if [ -z "$src" ]; then
     src="$(find_latest_download)"
-    [ -n "$src" ] || fail "не нашёл 7z*-mac.tar.xz или папку 7z*-mac в ~/Downloads. Укажите путь: 7zip-update <путь>"
+    [ -n "$src" ] || fail "не нашёл 7z*-mac.tar.xz (или 7z*-mac-x64.tar.xz для Intel) в ~/Downloads. Укажите путь: 7zip-update <путь>"
     say "Источник: $src"
 fi
 [ -e "$src" ] || fail "нет такого файла или папки: $src"

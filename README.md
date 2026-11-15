@@ -96,7 +96,7 @@ then restart 7-Zip. The Finder submenu always follows the system language.
 
 Needs Xcode or the Command Line Tools (`xcode-select --install`).
 
-1. Download the **macOS console version** of 7-Zip (`7z….-mac.tar.xz`) from [7-zip.org](https://www.7-zip.org/download.html).
+1. Download the **macOS console version** of 7-Zip (`7z….-mac.tar.xz`, or `-mac-x64` for Intel) from [7-zip.org](https://www.7-zip.org/download.html).
 2. Clone and install:
 
    ```bash
@@ -118,10 +118,12 @@ Needs Xcode or the Command Line Tools (`xcode-select --install`).
 
 #### For maintainers: publishing a release
 
-When a new 7-Zip comes out: **Actions → Release → Run workflow**, paste the link to the macOS console archive
-(for example `https://www.7-zip.org/a/7z2606-mac.tar.xz`) and run. The workflow downloads it (only from
-7-zip.org or github.com/ip7z/7zip), builds 7-Zip.app with that engine inside for the same processors
-(Apple Silicon, Intel or both), packs a `.dmg` and publishes the release with checksums.
+When a new 7-Zip comes out: **Actions → Release → Run workflow**, paste the link to the macOS console archive from the
+[7-Zip download page](https://www.7-zip.org/download.html)
+(for example `https://github.com/ip7z/7zip/releases/download/26.06/7z2606-mac.tar.xz`) and run.
+Either build works — the Apple Silicon (`-mac`) or the Intel (`-mac-x64`) one: the workflow fetches its pair
+from the same place (only 7-zip.org or github.com/ip7z/7zip), combines them into a universal engine,
+builds 7-Zip.app with it inside, packs a `.dmg` and publishes the release with checksums.
 The same build runs locally: `./release.sh <link or path to the archive>` → `dist/`.
 
 ---
@@ -204,7 +206,7 @@ The same build runs locally: `./release.sh <link or path to the archive>` → `d
 
 Нужен Xcode или Command Line Tools (`xcode-select --install`).
 
-1. Скачайте **консольную версию 7-Zip для macOS** (`7z….-mac.tar.xz`) с [7-zip.org](https://www.7-zip.org/download.html).
+1. Скачайте **консольную версию 7-Zip для macOS** (`7z….-mac.tar.xz`, для Intel — `-mac-x64`) с [7-zip.org](https://www.7-zip.org/download.html).
 2. Склонируйте и установите:
 
    ```bash
@@ -224,10 +226,12 @@ The same build runs locally: `./release.sh <link or path to the archive>` → `d
 
 #### Для мейнтейнеров: выпуск релиза
 
-Когда выходит новый 7-Zip: **Actions → Release → Run workflow**, вставьте ссылку на консольный архив для macOS
-(например, `https://www.7-zip.org/a/7z2606-mac.tar.xz`) и запустите. Workflow скачает его (только с 7-zip.org
-или github.com/ip7z/7zip), соберёт 7-Zip.app с этим движком внутри под те же процессоры
-(Apple Silicon, Intel или оба), упакует в `.dmg` и опубликует релиз с контрольными суммами.
+Когда выходит новый 7-Zip: **Actions → Release → Run workflow**, вставьте ссылку на консольный архив для macOS со
+[страницы загрузки 7-Zip](https://www.7-zip.org/download.html)
+(например, `https://github.com/ip7z/7zip/releases/download/26.06/7z2606-mac.tar.xz`) и запустите.
+Подойдёт любая из двух сборок — для Apple Silicon (`-mac`) или Intel (`-mac-x64`): парную workflow возьмёт
+оттуда же (только с 7-zip.org или github.com/ip7z/7zip), склеит из них универсальный движок,
+соберёт с ним 7-Zip.app, упакует в `.dmg` и опубликует релиз с контрольными суммами.
 Та же сборка запускается и локально: `./release.sh <ссылка или путь к архиву>` → `dist/`.
 
 ---

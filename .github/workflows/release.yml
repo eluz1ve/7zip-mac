@@ -1,7 +1,8 @@
 # Ручной выпуск готовой сборки.
 # Когда выходит новый 7-Zip: Actions → Release → Run workflow → вставить ссылку
-# на консольную версию для macOS (7zXXXX-mac.tar.xz) с https://www.7-zip.org/download.html.
-# Сборка 7-Zip.app с этим 7zz внутри публикуется как релиз с образом диска.
+# на консольную версию для macOS (7zXXXX-mac.tar.xz или -mac-x64.tar.xz) с https://www.7-zip.org/download.html.
+# Вторая сборка берётся оттуда же, из двух 7zz склеивается универсальный, и 7-Zip.app
+# с ним внутри публикуется как релиз с образом диска.
 
 name: Release
 
@@ -9,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       url:
-        description: "Link to the macOS console 7-Zip (7zXXXX-mac.tar.xz) from 7-zip.org or github.com/ip7z/7zip"
+        description: "Link to the macOS console 7-Zip (7zXXXX-mac.tar.xz or 7zXXXX-mac-x64.tar.xz) from the 7-zip.org download page"
         required: true
         type: string
       draft:
