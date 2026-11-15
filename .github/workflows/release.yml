@@ -37,7 +37,7 @@ jobs:
     runs-on: macos-26
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Select newest Xcode
         run: |
@@ -54,7 +54,7 @@ jobs:
 
       - name: Attach build to this run
         if: ${{ !inputs.publish }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: 7-Zip-${{ steps.build.outputs.version }}-macOS-${{ steps.build.outputs.label }}
           path: dist/*
