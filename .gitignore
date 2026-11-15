@@ -1,0 +1,12 @@
+# Сборка
+build/
+dist/
+
+# macOS
+.DS_Store
+
+# Временные файлы записи демо
+demo/raw/
+demo/video/node_modules/
+demo/video/out/
+demo/video/public/

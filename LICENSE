@@ -1,0 +1,34 @@
+MIT License
+
+Copyright (c) 2026 eluz1ve
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+This project is an independent, unofficial front end. It is not affiliated with,
+endorsed by or sponsored by Igor Pavlov, the 7-Zip project or Apple. The code and
+the builds are provided "as is", without warranty of any kind (see above).
+
+This license covers only the source code in this repository (the macOS front end,
+Finder extension and scripts). It does not cover 7-Zip itself: the 7zz program is
+not part of this source code. Ready-made release builds include the unmodified
+official 7zz from https://www.7-zip.org/ together with its own license file.
+7-Zip is Copyright (C) Igor Pavlov and is distributed under the GNU LGPL
+(with the unRAR restriction); see the License.txt that comes with 7-Zip.

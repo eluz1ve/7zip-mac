@@ -1,0 +1,65 @@
+# Ручной выпуск готовой сборки.
+# Когда выходит новый 7-Zip: Actions → Release → Run workflow → вставить ссылку
+# на консольную версию для macOS (7zXXXX-mac.tar.xz) с https://www.7-zip.org/download.html.
+# Сборка 7-Zip.app с этим 7zz внутри публикуется как релиз с образом диска.
+
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Link to the macOS console 7-Zip (7zXXXX-mac.tar.xz) from 7-zip.org or github.com/ip7z/7zip"
+        required: true
+        type: string
+      draft:
+        description: "Create as a draft (publish manually after checking)"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select newest Xcode
+        run: |
+          xcode="$(ls -d /Applications/Xcode_*.app 2>/dev/null | sort -V | tail -1)"
+          if [ -n "$xcode" ]; then sudo xcode-select -s "$xcode"; fi
+          xcodebuild -version
+          swiftc --version
+
+      - name: Build
+        id: build
+        env:
+          SEVENZIP_URL: ${{ inputs.url }}
+        run: ./release.sh "$SEVENZIP_URL" dist
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.build.outputs.version }}
+          NOTES: ${{ steps.build.outputs.notes }}
+          DRAFT: ${{ inputs.draft }}
+        run: |
+          # Тег v26.06; если такой уже есть (пересборка той же версии) — v26.06-2, v26.06-3…
+          tag="v$VERSION"; n=1
+          while gh release view "$tag" >/dev/null 2>&1; do n=$((n + 1)); tag="v$VERSION-$n"; done
+          flags=()
+          if [ "$DRAFT" = "true" ]; then flags+=(--draft); fi
+          gh release create "$tag" dist/* \
+            --target "$GITHUB_SHA" \
+            --title "7-Zip $VERSION for macOS" \
+            --notes-file "$NOTES" \
+            "${flags[@]}"
+          echo "### Released [$tag]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/tag/$tag)" >> "$GITHUB_STEP_SUMMARY"

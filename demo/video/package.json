@@ -1,0 +1,16 @@
+{
+  "name": "7zip-mac-demo",
+  "private": true,
+  "description": "Demo video for the README (Remotion)",
+  "scripts": {
+    "studio": "remotion studio",
+    "render:en": "remotion render src/index.ts Demo-en out/demo-en.mp4",
+    "render:ru": "remotion render src/index.ts Demo-ru out/demo-ru.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.380",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.380"
+  }
+}
