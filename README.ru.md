@@ -17,10 +17,7 @@
 
 ---
 
-<p align="center">
-  <a href="docs/demo-ru.mp4"><img src="docs/demo-ru.gif" width="860" alt="7-Zip для macOS — демо"></a><br>
-  <sub>▶ <a href="docs/demo-ru.mp4">Смотреть в полном качестве (MP4)</a></sub>
-</p>
+https://github.com/user-attachments/assets/6aaa8c84-60bb-4f8e-9f36-e54f4f5b7c43
 
 Если вы пользовались 7-Zip в Windows — вы уже умеете пользоваться и этим.
 Это нативная оболочка для macOS над официальным консольным 7-Zip: те же привычные окна —

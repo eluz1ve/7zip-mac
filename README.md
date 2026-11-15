@@ -17,10 +17,7 @@
 
 ---
 
-<p align="center">
-  <a href="docs/demo-en.mp4"><img src="docs/demo-en.gif" width="860" alt="7-Zip for macOS — demo"></a><br>
-  <sub>▶ <a href="docs/demo-en.mp4">Watch in full quality (MP4)</a></sub>
-</p>
+https://github.com/user-attachments/assets/b27773a6-cdd7-4705-ba60-b92f35132a91
 
 If you have ever used 7-Zip on Windows, you already know how this works.
 This is a native macOS front end for the official 7-Zip console engine that brings back
